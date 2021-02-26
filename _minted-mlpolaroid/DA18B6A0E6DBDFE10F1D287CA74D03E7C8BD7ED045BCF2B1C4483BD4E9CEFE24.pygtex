@@ -1,0 +1,27 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{\PYGZsh{}Dataset config snippet}
+
+\PYG{c+c1}{\PYGZsh{} train and test split for dataset}
+\PYG{k}{if} \PYG{n}{argv}\PYG{o}{.}\PYG{n}{split} \PYG{o+ow}{is} \PYG{o+ow}{not} \PYG{k+kc}{None} \PYG{o+ow}{and}
+	 \PYG{n}{argv}\PYG{o}{.}\PYG{n}{split} \PYG{o}{\PYGZlt{}} \PYG{l+m+mi}{1}\PYG{p}{:}
+	
+    \PYG{n}{split\PYGZus{}ratio} \PYG{o}{=} \PYG{n}{argv}\PYG{o}{.}\PYG{n}{split}
+\PYG{k}{else}\PYG{p}{:}
+    \PYG{n}{split\PYGZus{}ratio} \PYG{o}{=} \PYG{o}{.}\PYG{l+m+mi}{75}
+
+\PYG{n}{img\PYGZus{}count} \PYG{o}{=} \PYG{l+m+mi}{0}
+\PYG{k}{for} \PYG{n}{photo} \PYG{o+ow}{in} \PYG{n}{img\PYGZus{}A}\PYG{p}{:}
+    \PYG{k}{if} \PYG{n}{photo}\PYG{o}{.}\PYG{n}{lower}\PYG{p}{()}\PYG{o}{.}\PYG{n}{endswith}\PYG{p}{(}
+    	  \PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}.png\PYGZsq{}}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}.jpg\PYGZsq{}}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}.jpeg\PYGZsq{}}\PYG{p}{)):}
+		
+        \PYG{n}{img\PYGZus{}count} \PYG{o}{+=} \PYG{l+m+mi}{1}
+
+\PYG{n}{img\PYGZus{}split} \PYG{o}{=} \PYG{n}{math}\PYG{o}{.}\PYG{n}{ceil}\PYG{p}{(}\PYG{n}{img\PYGZus{}count}
+	\PYG{o}{*} \PYG{p}{(}\PYG{n}{split\PYGZus{}ratio}\PYG{p}{))}
+
+
+\PYG{o}{...}
+
+
+        \PYG{n}{exit}\PYG{p}{()}
+\end{Verbatim}

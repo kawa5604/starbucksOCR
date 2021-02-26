@@ -1,0 +1,173 @@
+% Jorge 
+\documentclass[conference]{IEEEtran}
+\usepackage{cite}
+
+%For Visuals from Latex Draw
+%%%%%%%%%%%%%%%%
+\usepackage{graphicx}
+%Ununused?
+%\usepackage{float}
+%\usepackage{algorithm}
+%\usepackage{algpseudocode}
+%\usepackage{amsmath}
+%\usepackage{listings}
+%\usepackage{multirow,bigstrut}
+%\usepackage{dirtytalk}
+%\usepackage{hhline}
+%\usepackage{lettrine}
+%\usepackage{caption}
+%\usepackage{blkarray, bigstrut}
+%\usepackage{enumitem}
+%\usepackage{fancybox}
+%%%%%%%%%%%%%%%%
+
+\usepackage{minted} % FOR CODE TO LOOK LIKE CODE
+\usepackage{xcolor} % FOR CODE TO BE BLACK AND WHITE
+%This package will make the last page's have both columns of the same height.
+%\usepackage{flushend}
+%Uncomment this when paper is done but be careful it generates correctly, else ask Ben to generate on his old LaTex Build
+
+%Package for graph
+\usepackage{subcaption}
+\usepackage{pgfplots}
+
+%This package was added by Dr. Pedersen so handle with care
+%\usepackage{longtable}
+
+%%%%%%%%%%%%%%%%%
+\newlength\jorgeslength %Fixing Ben's weakness
+\setlength\jorgeslength\columnwidth
+\newcommand{\jorgesquote}[3]{
+%\newlength\jorgeslength
+%\setlength\jorgeslength\columnwidth
+\begin{center}
+\begin{tabular}{p{\mylength}}
+{\fontsize{30}{0}\selectfont{\textbf{``}}}{\fontfamily{qag}{\fontsize{24}{0}\selectfont{\textbf{#1}}}}{\fontsize{30}{0}\selectfont{\textbf{''}}}
+\end{tabular}
+\end{center}
+\hspace{0.5cm} \fontsize{12}{0}{{\rm \textbf{--- {#2}}}}{#3}
+}
+%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%
+%Table Command Made by Dr. Pedersen
+%%%%%%%%%%%%%%%%
+%Preparation For Command%
+\typeout{Checking Column Width, Then Checking End of Column}
+\typeout{COLUMN WIDTH: \the\columnwidth}
+\newlength\mylength
+\setlength\mylength\columnwidth
+\addtolength\mylength{-30pt}
+\typeout{MYLENGTH WIDTH: \the\mylength}
+%Command Declaration%
+\newcommand{\jorgestable}[1]{
+\noindent\quad{}{\tt \begin{tabular}{p{\mylength}}\\#1\\ \\\end{tabular}}
+}
+%%%%%%%%%%%%%%%%
+%Sample
+%\jorgestable{Hello\\ This is an example of how code will look now that it is properly tabbed. This solution was provided by Dr. Pedersen after painful and elaborate work. Here is a lot of x to show the spacing.
+%x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x}
+%The end
+%%%%%%%%%%%%%%%%
+
+%insert visual template
+%\begin{table}[htb]
+%	\caption{This is a table, and they do not end in a .}
+%	\jorgestable{
+%   Write Here		
+%	}
+
+%Tip: if I ever want to force a pagebreak:
+%\vfill\pagebreak[4]   if I type a 3 or a 2 it tells it to give it most of time, 4 is like DO IT.
+
+% correct bad hyphenation here
+\hyphenation{op-tical net-works semi-conduc-tor}
+
+\begin{document}
+
+\title{Using Machine Learning and Optical Character Recognition\\to adaptively process text in pictures and scans}
+
+
+\author{\IEEEauthorblockN{Deirdre Chong, Jorge Garcia,\\ 
+Vanessa Nava-Camal, Zachary FitzHugh}
+\IEEEauthorblockA{Undergraduate Department of Computer Science\\
+University of Nevada, Las Vegas}
+\and
+\IEEEauthorblockN{Jorge Ram\'on Fonseca Cacho}
+\IEEEauthorblockA{Department of Computer Science\\
+University of Nevada, Las Vegas\\
+Email: Jorge.FonsecaCacho@unlv.edu}}
+
+% use for special paper notices
+%\IEEEspecialpapernotice{(Invited Paper)}
+
+\maketitle
+
+\section{Introduction}\label{section:Introduction}
+In this paper we will use Optical Character Recognition and Intelligent Character Recognition, with a 
+
+
+Machine Learning has seen a massive demand in computer applications over the past few years. From self-driving cars to voice assistants like Siri, Machine Learning makes it possible for the computer to solve such hard problems. Our research aims to apply Machine Learning in image processing and OCR.
+OCR stands for Optical Character Recognition. It is used to read text from images such as a scanned document or a picture. This technology is used to convert, virtually any kind of images containing written text (typed, handwritten, or printed) into machine-readable text data.
+
+OCR has two major building blocks:
+
+\begin{itemize}
+	\item Text Detection
+	\item Text Recognition
+\end{itemize}
+
+Text detection or in general object detection has been an area of intensive research accelerated with deep learning. Today, object detection, and in our case, text detection, can be achieved through two approaches:
+
+\begin{itemize}
+	\item Region-based Detection
+	\item Single Shot Detection
+\end{itemize}
+
+Region-based methods work by doing multiple passes to process the input. They first try to find all the regions which have objects the application can recognize, then, pass the regions detected to a classifier engine, which as its name suggests, it classifies the regions into the types we specify.
+
+A single shot method on the other hand, tries to find the regions and the type at the same time, or in a single shot. Since this is a single step process, it is usually much faster but the downside of this being that it struggles with bad quality inputs and smaller objects.
+
+
+
+
+
+\begin{IEEEkeywords}
+  Machine Learning, OCR, Computer Vision, Deep Learning, Text Processing, Optical Character Recognition, YOLOv3, Tesseract
+\end{IEEEkeywords}
+
+% For peer review papers, you can put extra information on the cover
+% page as needed:
+% \ifCLASSOPTIONpeerreview
+% \begin{center} \bfseries EDICS Category: 3-BBND \end{center}
+% \fi
+%
+% For peerreview papers, this IEEEtran command inserts a page break and
+% creates the second title. It will be ignored for other modes.
+\IEEEpeerreviewmaketitle
+
+
+
+\section{Objectives}\label{section:Objectives}
+
+The main objective of this research is developing an intelligent and adaptable character recognition is able to extract text and numbers from any type of card provided, these being credit or gift cards with high level of accuracy, regardless if the input is a scan or a photo.
+We will be experimenting with both methods mentioned, Region-based detection and Single shot detection, and see which provides a better performance given our constrains and input quality.
+We will gather enough data and samples to be create our own dataset and train our model to our specific cards to get a better accuracy than what broadly used datasets and pre-trained models provide.\\
+
+
+
+\section{Acknowledgement}\label{section:acknowledgement}
+We would like to thank UNLV's Center for Academic Enrichment and Outreach and the Office of Undergraduate Research for funding this research. 
+%This material is based upon work supported by the National Science Foundation under Grant No. 1625677. %TBD if needs to be added.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% references section
+\bibliographystyle{IEEEtran}
+% argument is your BibTeX string definitions and bibliography database(s)
+\bibliography{starbucksocr} 
+
+
+
+\end{document}
