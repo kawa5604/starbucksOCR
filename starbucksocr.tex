@@ -153,7 +153,20 @@ The main objective of this research is developing an intelligent and adaptable c
 We will be experimenting with both methods mentioned, Region-based detection and Single shot detection, and see which provides a better performance given our constrains and input quality.
 We will gather enough data and samples to create our own dataset and train our model to our specific cards to get a better accuracy than what broadly used datasets and pre-trained models provide.\\
 
+Optical Character Recognition will accurately translate into plain text. 
+Since gift card design varies, image processing needs to be dynamic. Our next goal is to use machine learning to classify different pin cover designs. 
+To create a Neural Network, we will need to collect pin covers from our gift card database and create a dataset. 
+Our goal for this classifier is to accurately distinguish different pin covers. Our final goal is to use our program to use both Optical Character Recognition and Machine Learning to parse gift card information.\\
 
+
+\section{Methods}\label{section:Methods}
+
+The research uses gift card entry from a database that contains gift card image filename, SKU number, and card id. For each entry in the database, we are checking if the image exists. 
+The gift card images are stores in UNLV’s gpu server, @gpu.cs.unlv.edu. To parse gift card information from an image, we are using Python and libraries such as OpenCV and PyTesseract. 
+For the initial part of the parsing, we are using image processing techniques to turn the image into black and white. Turning the image into a black and white image is necessary because our OCR library only accepts black and white image. 
+The research has also seen great improvement in accuracy using other image processing techniques such as denoise. Our next step is to use our OCR library to turn the black and white image into text. 
+After we get the text, we confirm is the image contains the SKU and card id that was stored in the database. 
+By following these methods, we are able to check the accuracy of different OCR libraries and different image processing techniques.\\
 
 \section{Acknowledgement}\label{section:acknowledgement}
 We would like to thank UNLV's Center for Academic Enrichment and Outreach and the Office of Undergraduate Research for funding this research. 
